@@ -50,7 +50,8 @@ publishing {
 
     repositories {
         maven {
-            url = uri("https://oss.sonatype.org/content/repositories/snapshots")
+            name = "sonatypeSnapshots"
+            url = uri("https://s01.oss.sonatype.org/content/repositories/snapshots/")
 
             credentials {
                 username = System.getenv("OSSRH_USERNAME")
