@@ -1,4 +1,5 @@
 import org.gradle.external.javadoc.StandardJavadocDocletOptions
+import org.gradle.api.tasks.javadoc.Javadoc
 
 plugins {
     `java-library`
@@ -14,16 +15,12 @@ java {
     withSourcesJar()
 }
 
-tasks {
-    javadoc {
-        configureEach {
-            (options as StandardJavadocDocletOptions).apply {
-                addBooleanOption("html5", true)
+tasks.withType<Javadoc>().configureEach {
+    (options as StandardJavadocDocletOptions).apply {
+        addBooleanOption("html5", true)
 
-                encoding = "UTF-8"
-                charSet = "UTF-8"
-            }
-        }
+        encoding = "UTF-8"
+        charSet = "UTF-8"
     }
 }
 
