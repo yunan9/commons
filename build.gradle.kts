@@ -50,7 +50,6 @@ publishing {
 
     repositories {
         maven {
-            name = "centralPortalSnapshots"
             url = uri("https://central.sonatype.com/repository/maven-snapshots/")
 
             credentials {
