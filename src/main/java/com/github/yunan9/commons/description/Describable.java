@@ -1,0 +1,7 @@
+package com.github.yunan9.commons.description;
+
+@FunctionalInterface
+public interface Describable<T> {
+
+  T getDescription();
+}
