@@ -1,5 +1,12 @@
 commons — Minimal reusable interfaces for common concepts (name, id, value, etc.)
 
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.yunan9/commons.svg?label=Maven%20Central)](https://central.sonatype.com/artifact/io.github.yunan9/commons)
+[![Snapshot](https://img.shields.io/nexus/s/io.github.yunan9/commons?server=https%3A%2F%2Fcentral.sonatype.com&label=Sonatype%20Snapshots)](https://central.sonatype.com/repository/maven-snapshots/io/github/yunan9/commons/0.0.1-SNAPSHOT/)
+[![javadoc](https://javadoc.io/badge2/io.github.yunan9/commons/javadoc.svg)](https://javadoc.io/doc/io.github.yunan9/commons)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Java](https://img.shields.io/badge/Java-21-blue)](#)
+[![Gradle](https://img.shields.io/badge/Gradle-8.x-02303A?logo=gradle)](#)
+
 Small, focused Java interfaces and simple implementations to model common concepts you use everywhere:
 - Nameable, Identifiable, Keyable, Valuable, Quantifiable, Localizable, Describable, Referenceable
 - Lightweight builder/factory contracts: Buildable and InputDependentBuildable
