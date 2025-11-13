@@ -1,7 +1,0 @@
-package com.github.yunan9.commons.reference;
-
-@FunctionalInterface
-public interface Referenceable<T> {
-
-  T getReference();
-}
