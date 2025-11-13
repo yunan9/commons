@@ -1,3 +1,5 @@
+import org.gradle.external.javadoc.StandardJavadocDocletOptions
+
 plugins {
     `java-library`
     `maven-publish`
@@ -10,6 +12,19 @@ java {
 
     withJavadocJar()
     withSourcesJar()
+}
+
+tasks {
+    javadoc {
+        configureEach {
+            (options as StandardJavadocDocletOptions).apply {
+                addBooleanOption("html5", true)
+
+                encoding = "UTF-8"
+                charSet = "UTF-8"
+            }
+        }
+    }
 }
 
 repositories {
