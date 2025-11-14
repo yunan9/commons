@@ -39,7 +39,6 @@ publishing {
                 developers {
                     developer {
                         id = "yunan9"
-                        name = "Yunan"
                     }
                 }
 
