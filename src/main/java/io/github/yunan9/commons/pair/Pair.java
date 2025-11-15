@@ -13,9 +13,9 @@ package io.github.yunan9.commons.pair;
 public class Pair<L, R> {
 
   /** The left value. */
-  protected final L left;
+  private final L left;
   /** The right value. */
-  protected final R right;
+  private final R right;
 
   /**
    * Creates a new pair.
