@@ -11,7 +11,7 @@ final class InputDependentFactoryTest {
   @Test
   @DisplayName("Lambda transforms input to upper-case")
   void lambdaTransformsInput() {
-    InputDependentFactory<String, String> factory = s -> s == null ? null : s.toUpperCase();
+    final InputDependentFactory<String, String> factory = s -> s == null ? null : s.toUpperCase();
 
     assertEquals(
         "HELLO", factory.newInstance("hello"), "Factory should transform input to upper-case");
@@ -39,7 +39,7 @@ final class InputDependentFactoryTest {
   @Test
   @DisplayName("Identity mapping returns the same reference")
   void identityMappingReturnsSameReference() {
-    InputDependentFactory<String, String> factory = in -> in;
+    final InputDependentFactory<String, String> factory = in -> in;
 
     final var input = "value";
     final var output = factory.newInstance(input);
