@@ -15,6 +15,17 @@ java {
     withSourcesJar()
 }
 
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation(platform("org.junit:junit-bom:5.10.0"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
+
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+}
+
 tasks.withType<Javadoc>().configureEach {
     (options as StandardJavadocDocletOptions).apply {
         addBooleanOption("html5", true)
@@ -22,6 +33,10 @@ tasks.withType<Javadoc>().configureEach {
         encoding = "UTF-8"
         charSet = "UTF-8"
     }
+}
+
+tasks.withType<Test>().configureEach {
+    useJUnitPlatform()
 }
 
 publishing {
