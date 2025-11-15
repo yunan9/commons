@@ -1,6 +1,3 @@
-import org.gradle.external.javadoc.StandardJavadocDocletOptions
-import org.gradle.api.tasks.javadoc.Javadoc
-
 plugins {
     `java-library`
     `maven-publish`
@@ -15,12 +12,29 @@ java {
     withSourcesJar()
 }
 
-tasks.withType<Javadoc>().configureEach {
-    (options as StandardJavadocDocletOptions).apply {
-        addBooleanOption("html5", true)
+repositories {
+    mavenCentral()
+}
 
-        encoding = "UTF-8"
-        charSet = "UTF-8"
+dependencies {
+    testImplementation(platform("org.junit:junit-bom:5.10.0"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
+
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+}
+
+tasks {
+    withType<Javadoc>().configureEach {
+        (options as StandardJavadocDocletOptions).apply {
+            addBooleanOption("html5", true)
+
+            encoding = "UTF-8"
+            charSet = "UTF-8"
+        }
+    }
+
+    withType<Test>().configureEach {
+        useJUnitPlatform()
     }
 }
 
@@ -39,7 +53,6 @@ publishing {
                 developers {
                     developer {
                         id = "yunan9"
-                        name = "Yunan"
                     }
                 }
 
