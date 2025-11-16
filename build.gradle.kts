@@ -17,10 +17,11 @@ repositories {
 }
 
 dependencies {
-    testImplementation(platform("org.junit:junit-bom:5.10.0"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
+    val junitBaseGroupId = "org.junit"
+    testImplementation(platform("$junitBaseGroupId:junit-bom:5.10.0"))
+    testImplementation("$junitBaseGroupId.jupiter:junit-jupiter")
 
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    testRuntimeOnly("$junitBaseGroupId.platform:junit-platform-launcher")
 }
 
 tasks {
