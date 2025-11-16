@@ -13,12 +13,12 @@ final class FactoryTest {
   void lambdaFactoryReturnsConstant() {
     final Factory<String> factory = () -> "constant";
 
-    final var factory1 = factory.newInstance();
-    final var factory2 = factory.newInstance();
+    final var result1 = factory.newInstance();
+    final var result2 = factory.newInstance();
 
-    assertNotNull(factory1, "Factory should not return null for this implementation");
-    assertEquals("constant", factory1, "Factory should return the configured constant value");
-    assertSame(factory1, factory2, "String literals may be the same instance due to interning");
+    assertNotNull(result1, "Factory should not return null for this implementation");
+    assertEquals("constant", result1, "Factory should return the configured constant value");
+    assertSame(result1, result2, "String literals may be the same instance due to interning");
   }
 
   @Test
@@ -26,12 +26,12 @@ final class FactoryTest {
   void methodReferenceCreatesNewInstances() {
     final Factory<Object> factory = Object::new;
 
-    final var factory1 = factory.newInstance();
-    final var factory2 = factory.newInstance();
+    final var result1 = factory.newInstance();
+    final var result2 = factory.newInstance();
 
-    assertNotNull(factory1, "First instance is created");
-    assertNotNull(factory2, "Second instance is created");
-    assertNotSame(factory1, factory2, "Each call should create a distinct instance");
+    assertNotNull(result1, "First instance is created");
+    assertNotNull(result2, "Second instance is created");
+    assertNotSame(result1, result2, "Each call should create a distinct instance");
   }
 
   @Test
