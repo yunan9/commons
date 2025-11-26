@@ -5,7 +5,7 @@ import io.github.yunan9.commons.value.Valuable;
 public interface MutableValuable<T> extends Valuable<T> {
 
   @Override
-  T getValue();
+  T value();
 
-  void setValue(final T value);
+  void value(final T value);
 }

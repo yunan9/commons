@@ -5,7 +5,7 @@ import io.github.yunan9.commons.reference.Referenceable;
 public interface MutableReferenceable<T> extends Referenceable<T> {
 
   @Override
-  T getReference();
+  T reference();
 
-  void setReference(final T reference);
+  void reference(final T reference);
 }

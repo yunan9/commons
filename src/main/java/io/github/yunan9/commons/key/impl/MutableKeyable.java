@@ -5,7 +5,7 @@ import io.github.yunan9.commons.key.Keyable;
 public interface MutableKeyable<T> extends Keyable<T> {
 
   @Override
-  T getKey();
+  T key();
 
-  void setKey(final T key);
+  void key(final T key);
 }

@@ -5,7 +5,7 @@ import io.github.yunan9.commons.quantity.Quantifiable;
 public interface MutableQuantifiable<T extends Number> extends Quantifiable<T> {
 
   @Override
-  T getQuantity();
+  T quantity();
 
-  void setQuantity(final T quantity);
+  void quantity(final T quantity);
 }

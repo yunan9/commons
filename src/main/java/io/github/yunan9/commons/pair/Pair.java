@@ -10,11 +10,11 @@ public class Pair<L, R> {
     this.right = right;
   }
 
-  public final L getLeft() {
+  public final L left() {
     return this.left;
   }
 
-  public final R getRight() {
+  public final R right() {
     return this.right;
   }
 }

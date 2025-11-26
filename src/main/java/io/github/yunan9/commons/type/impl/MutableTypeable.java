@@ -5,7 +5,7 @@ import io.github.yunan9.commons.type.Typeable;
 public interface MutableTypeable<T> extends Typeable<T> {
 
   @Override
-  T getType();
+  T type();
 
-  void setType(final T type);
+  void type(final T type);
 }

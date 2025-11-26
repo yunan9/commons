@@ -13,25 +13,25 @@ final class PairTest {
   void accessorsReturnAssignedValues() {
     final var pair = new Pair<>("a", "b");
 
-    assertEquals("a", pair.getLeft(), "Left value should be \"a\"");
-    assertEquals("b", pair.getRight(), "Right value should be \"b\"");
-    assertNotEquals(pair.getLeft(), pair.getRight(), "Left and Right are different values");
+    assertEquals("a", pair.left(), "Left value should be \"a\"");
+    assertEquals("b", pair.right(), "Right value should be \"b\"");
+    assertNotEquals(pair.left(), pair.right(), "Left and Right are different values");
   }
 
   @Test
   @DisplayName("Pair supports nulls on either side")
   void supportsNulls() {
     final var leftNull = new Pair<>(null, "b");
-    assertNull(leftNull.getLeft(), "Left may be null");
-    assertEquals("b", leftNull.getRight());
+    assertNull(leftNull.left(), "Left may be null");
+    assertEquals("b", leftNull.right());
 
     final var rightNull = new Pair<>("a", null);
-    assertEquals("a", rightNull.getLeft());
-    assertNull(rightNull.getRight(), "Right may be null");
+    assertEquals("a", rightNull.left());
+    assertNull(rightNull.right(), "Right may be null");
 
     final var bothNull = new Pair<>(null, null);
-    assertNull(bothNull.getLeft());
-    assertNull(bothNull.getRight());
+    assertNull(bothNull.left());
+    assertNull(bothNull.right());
   }
 
   @Test
@@ -39,8 +39,8 @@ final class PairTest {
   void supportsMixedGenerics() {
     final var pair = new Pair<>(42, "answer");
 
-    assertEquals(42, pair.getLeft());
-    assertEquals("answer", pair.getRight());
+    assertEquals(42, pair.left());
+    assertEquals("answer", pair.right());
   }
 
   @Test
@@ -51,8 +51,8 @@ final class PairTest {
 
     final var pair = new Pair<>(left, right);
 
-    assertSame(left, pair.getLeft(), "Left reference should be preserved");
-    assertSame(right, pair.getRight(), "Right reference should be preserved");
+    assertSame(left, pair.left(), "Left reference should be preserved");
+    assertSame(right, pair.right(), "Right reference should be preserved");
   }
 
   @Test

@@ -5,7 +5,7 @@ import io.github.yunan9.commons.id.Identifiable;
 public interface MutableIdentifiable<T> extends Identifiable<T> {
 
   @Override
-  T getId();
+  T id();
 
-  void setId(final T id);
+  void id(final T id);
 }
