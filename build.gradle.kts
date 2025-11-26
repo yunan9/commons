@@ -1,15 +1,26 @@
 plugins {
+    alias(libs.plugins.jmh)
+    alias(libs.plugins.indra.publishing)
+    alias(libs.plugins.indra.publishing.sonatype)
+
     `java-library`
-    `maven-publish`
 }
+
+val javaVersion = 21
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
+        languageVersion = JavaLanguageVersion.of(javaVersion)
     }
 
     withJavadocJar()
     withSourcesJar()
+}
+
+configurations {
+    jmhImplementation.configure {
+        extendsFrom(compileOnly.get())
+    }
 }
 
 repositories {
@@ -17,61 +28,40 @@ repositories {
 }
 
 dependencies {
-    testImplementation(platform("org.junit:junit-bom:5.10.0"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
+    testImplementation(platform(libs.junit.bom))
+    testImplementation(libs.junit.jupiter)
 
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    testRuntimeOnly(libs.junit.platform.launcher)
 }
 
 tasks {
-    withType<Javadoc>().configureEach {
-        (options as StandardJavadocDocletOptions).apply {
-            addBooleanOption("html5", true)
-
-            encoding = "UTF-8"
-            charSet = "UTF-8"
-        }
-    }
-
-    withType<Test>().configureEach {
+    test {
         useJUnitPlatform()
     }
 }
 
-publishing {
-    publications {
-        create<MavenPublication>("maven") {
-            from(components["java"])
-
-            val githubRepository = System.getenv("GITHUB_REPOSITORY")
-            val githubRepositoryUrl = "https://github.com/$githubRepository"
-            pom {
-                url = githubRepositoryUrl
-                name = project.name
-                description = project.description
-
-                developers {
-                    developer {
-                        id = "yunan9"
-                    }
-                }
-
-                scm {
-                    url = githubRepositoryUrl
-                    connection = "scm:git:$githubRepositoryUrl.git"
-                    developerConnection = "scm:git:ssh://git@github.com/$githubRepository.git"
-                }
-            }
-        }
+indra {
+    javaVersions {
+        target(javaVersion)
     }
 
-    repositories {
-        maven {
-            url = uri("https://central.sonatype.com/repository/maven-snapshots/")
+    github("yunan9", "commons") {
+        ci(true)
+    }
 
-            credentials {
-                username = System.getenv("OSSRH_USERNAME")
-                password = System.getenv("OSSRH_TOKEN")
+    mitLicense()
+
+    signWithKeyFromPrefixedProperties("yunan9")
+
+    configurePublications {
+        from(components["java"])
+
+        pom {
+            developers {
+                developer {
+                    id = "yunan9"
+                    name = "Yunan"
+                }
             }
         }
     }
